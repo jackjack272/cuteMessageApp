@@ -10,61 +10,50 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="52dp"
-        android:layout_marginBottom="325dp"
+        android:layout_marginTop="46dp"
+        android:layout_marginBottom="56dp"
         android:text="Add a new person to the DB"
-        app:layout_constraintBottom_toTopOf="@+id/showPeople"
-        app:layout_constraintStart_toStartOf="@+id/name"
+        app:layout_constraintBottom_toTopOf="@+id/name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="39dp"
-        android:layout_marginBottom="28dp"
         android:ems="10"
         android:hint="Name"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/phoneNumber"
-        app:layout_constraintStart_toStartOf="@+id/phoneNumber"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="121dp" />
 
     <EditText
         android:id="@+id/phoneNumber"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginEnd="60dp"
-        android:layout_marginBottom="68dp"
+        android:layout_width="291dp"
+        android:layout_height="80dp"
         android:ems="10"
         android:hint="phone number: 6045555555"
         android:inputType="number"
-        app:layout_constraintBottom_toTopOf="@+id/savePerson"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name" />
+        tools:layout_editor_absoluteY="219dp" />
 
     <Button
         android:id="@+id/savePerson"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="390dp"
         android:text="save"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phoneNumber" />
+        tools:layout_editor_absoluteY="327dp" />
 
     <ListView
         android:id="@id/showPeople"
         android:layout_width="407dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="1dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        android:layout_height="334dp"
+        tools:layout_editor_absoluteX="2dp"
+        tools:layout_editor_absoluteY="397dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -43,44 +43,49 @@ public class Db extends SQLiteOpenHelper
 
 //Message Section
     @Override
-    public void messageSave(Message message) {
+    public void message_save(Message message) {
 
     }
 
     @Override
-    public List<Message> readAllMessages() {
+    public List<Message> message_readAll() {
         return null;
     }
 
     @Override
-    public Message readOneMessage(Integer id) {
+    public Message message_readOne(Integer id) {
         return null;
     }
 
     @Override
-    public void deleteOneMessage(Integer id) {
+    public Message message_readRandomOne(Message.Type type) {
+        return null;
+    }
+
+    @Override
+    public void message_delete(Integer id) {
 
     }
 
 
 //Person Section
     @Override
-    public void savePeron(Person person) {
+    public void person_save(Person person) {
 
     }
 
     @Override
-    public Person readOnePerson(Integer id) {
+    public Person person_readOne(Integer id) {
         return null;
     }
 
     @Override
-    public List<Person> readAll() {
+    public List<Person> person_readAll() {
         return null;
     }
 
     @Override
-    public void deletePerson(Integer id) {
+    public void person_delete(Integer id) {
 
     }
 

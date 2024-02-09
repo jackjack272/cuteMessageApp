@@ -26,16 +26,16 @@ public interface PersonCRUD {
 
 
 //create
-    public void savePeron(Person person);
+    public void person_save(Person person);
 
 //read
-    public Person readOnePerson(Integer id);
+    public Person person_readOne(Integer id);
 
 //read All
-    public List<Person> readAll();
+    public List<Person> person_readAll();
 
 //delete
-    public void deletePerson(Integer id);
+    public void person_delete(Integer id);
 
 
 }

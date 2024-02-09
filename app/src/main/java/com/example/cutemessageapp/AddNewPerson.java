@@ -42,7 +42,7 @@ public class AddNewPerson extends AppCompatActivity {
                 if(person== null){
                     return;
                 }
-                db.savePeron(person);
+                db.person_save(person);
 
                 Toast.makeText(AddNewPerson.this, "person was saved successfully", Toast.LENGTH_SHORT).show();
                 try {

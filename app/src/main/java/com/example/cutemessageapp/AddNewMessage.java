@@ -45,7 +45,7 @@ public class AddNewMessage extends AppCompatActivity {
                     return;
                 }
 
-                db.messageSave(msg);
+                db.message_save(msg);
             }
         });
         back.setOnClickListener(new View.OnClickListener() {

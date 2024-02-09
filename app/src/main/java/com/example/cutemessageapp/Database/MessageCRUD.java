@@ -25,16 +25,18 @@ public interface MessageCRUD {
 
 
     //create
-    void messageSave(Message message);
+    void message_save(Message message);
 
     //read one
-    List<Message> readAllMessages();
+    List<Message> message_readAll();
 
     //read all
-    Message readOneMessage(Integer id);
+    Message message_readOne(Integer id);
 
+    //chose a randomOne
+    Message message_readRandomOne(Message.Type type);
 
     //delete
-    void deleteOneMessage(Integer id);
+    void message_delete(Integer id);
 
 }

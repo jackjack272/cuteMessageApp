@@ -23,4 +23,9 @@ public class Message {
         this.type=type;
     }
 
+    public String getMessage(){
+        return  this.message;
+    }
+
+
 }
