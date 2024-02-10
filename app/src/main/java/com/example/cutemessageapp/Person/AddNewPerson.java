@@ -44,18 +44,16 @@ public class AddNewPerson extends AppCompatActivity {
 
                 Person person= getPerson();
                 if(person== null){
+                    Toast.makeText(AddNewPerson.this, "person is null", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                db.person_save(person);
 
+                db.person_save(person);
                 Toast.makeText(AddNewPerson.this, "person was saved successfully", Toast.LENGTH_SHORT).show();
-                try {
-                    Thread.sleep(200);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
+
 
                 startActivity(new Intent(AddNewPerson.this, MainActivity.class));
+
             }
         });
 

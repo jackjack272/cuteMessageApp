@@ -65,7 +65,8 @@ public class AddNewMessage extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager= new LinearLayoutManager(this);
         myMessages.setLayoutManager(linearLayoutManager);
 
-        myMessages.setAdapter( new MessageAdapter(this));
+        MessageAdapter messageAdapter= new MessageAdapter(this);
+        myMessages.setAdapter( messageAdapter);
     }
     private void setSpinner(){
 
@@ -83,6 +84,7 @@ public class AddNewMessage extends AppCompatActivity {
 
         this.save=findViewById(R.id.saveMsg);
         this.back= findViewById(R.id.msgBack);
+        this.myMessages=findViewById(R.id.availableMessages);
     }
     private Message getMsg(){
         String msg= theMessage.getText().toString();

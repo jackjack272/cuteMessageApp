@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,6 +18,7 @@ import com.example.cutemessageapp.R;
 
 import org.w3c.dom.Text;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.InternalClass> {
@@ -56,7 +58,13 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.Internal
         holder.deleteMe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                holder.type.setVisibility(View.INVISIBLE);
+                holder.message.setVisibility(View.INVISIBLE);
+                holder.deleteMe.setVisibility(View.INVISIBLE);
+
                 db.message_delete(messages.get(position).getId());
+                Toast.makeText(v.getContext(), "Message was deleted", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -65,5 +73,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.Internal
     @Override
     public int getItemCount() {
         return messages.size();
+//        return 5;
     }
+
 }

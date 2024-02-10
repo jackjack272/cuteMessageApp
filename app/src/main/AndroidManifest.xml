@@ -9,6 +9,8 @@
     <uses-permission android:name="android.permission.SEND_SMS" />
 
 
+
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -22,9 +24,15 @@
         <activity
             android:name=".Person.AddNewPerson"
             android:exported="false" />
+
         <activity
             android:name=".Message.AddNewMessage"
-            android:exported="false" />
+            android:exported="false"
+
+            android:windowSoftInputMode="stateHidden|adjustResize"
+            /><!-- this meant to make the recycler view not pop up when with the keyboard-->
+
+
         <activity
             android:name=".MainActivity"
             android:exported="true">

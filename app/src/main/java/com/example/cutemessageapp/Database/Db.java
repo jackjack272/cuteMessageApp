@@ -51,7 +51,6 @@ public class Db extends SQLiteOpenHelper
             cv.put(MessageCRUD.type, message.getType().toString());
 
         db.insert(MessageCRUD.msg_tableName,null,cv);
-        db.close();
     }
 
     @Override
@@ -151,7 +150,8 @@ public class Db extends SQLiteOpenHelper
             cv.put(PersonCRUD.personName, person.getName());
             cv.put(PersonCRUD.personPhoneNum, person.getPhoneNumber());
 
-        getWritableDatabase().insert(PersonCRUD.person_tableName,null, cv);
+        SQLiteDatabase db= getWritableDatabase();
+        db.insert(PersonCRUD.person_tableName, null, cv);
     }
 
     @Override

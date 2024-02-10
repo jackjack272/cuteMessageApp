@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -42,7 +43,14 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.InternalCl
         holder.deleteMe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                holder.name.setVisibility(View.INVISIBLE);
+                holder.phoneNumber.setVisibility(View.INVISIBLE);
+                holder.deleteMe.setVisibility(View.INVISIBLE);
+
                 db.person_delete(people.get(position).getId());
+
+                Toast.makeText(holder.itemView.getContext(), "Person was deleted", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -60,5 +68,7 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.InternalCl
     @Override
     public int getItemCount() {
         return people.size();
+//        return 5;
     }
+
 }
