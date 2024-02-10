@@ -1,14 +1,11 @@
-package com.example.cutemessageapp.Database.Entities;
+package com.example.cutemessageapp.Message.Entity;
 
-import lombok.AllArgsConstructor;
+import com.example.cutemessageapp.Person.Adapter.PersonAdapter;
+
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@AllArgsConstructor
-@NoArgsConstructor
+
 @Getter
-@Setter
 public class Message {
 
     public static enum Type{cute, loving, sweet, caring, encouraging, futureOriented}
@@ -18,6 +15,13 @@ public class Message {
     private String message;
     private Type type;
 
+    public Message(Integer id,  String message, Type type ){
+        this.id=id;
+        this.message= message;
+        this.type=type;
+    }
+
+
     public Message(String message, Type type ){
         this.message= message;
         this.type=type;
@@ -26,6 +30,12 @@ public class Message {
     public String getMessage(){
         return  this.message;
     }
+    public Type getType(){
+        return this.type;
+    }
+
+    public Integer getId(){return  this.id;}
+
 
 
 }

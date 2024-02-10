@@ -1,18 +1,18 @@
-package com.example.cutemessageapp.Database;
+package com.example.cutemessageapp.Database.Interfaces;
 
-import com.example.cutemessageapp.Database.Entities.Person;
+import com.example.cutemessageapp.Person.Entity.Person;
 
 import java.util.List;
 
 public interface PersonCRUD {
 
-    String personTableName="person";
+    String person_tableName ="person";
     String person_id="id";
     String personName="name";
     String personPhoneNum="phoneNum";
 
 
-    final static String dropTablePerson="DROP TABLE IF EXISTS "+personTableName;
+    final static String dropTablePerson="DROP TABLE IF EXISTS "+ person_tableName;
 
     //table code here.
     String makeUserTable = String.format("CREATE TABLE %s " +
@@ -21,7 +21,7 @@ public interface PersonCRUD {
                     "%s TEXT, " + // Define personName as TEXT
                     "%s TEXT" +  // Define personPhoneNum as TEXT
                     ")",
-            personTableName, "person_id", "personName", "personPhoneNum");
+            person_tableName, "person_id", "personName", "personPhoneNum");
 
 
 

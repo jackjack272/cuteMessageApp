@@ -1,17 +1,17 @@
-package com.example.cutemessageapp.Database;
+package com.example.cutemessageapp.Database.Interfaces;
 
-import com.example.cutemessageapp.Database.Entities.Message;
+import com.example.cutemessageapp.Message.Entity.Message;
 
 import java.util.List;
 
 public interface MessageCRUD {
 
-    String msgTableName="cuteMessages";
+    String msg_tableName ="cuteMessages";
 
-    String dropTableMessage="DROP TABLE IF EXISTS "+msgTableName;
+    String dropTableMessage="DROP TABLE IF EXISTS "+ msg_tableName;
 
     String id="id";
-    String name="name";
+    String message ="message";
     String type="type";
 
     //need to have a relationship of th
@@ -21,7 +21,7 @@ public interface MessageCRUD {
                     "%s TEXT, " + // Define name as TEXT
                     "%s TEXT" +  // Define type as TEXT
                     ")",
-            msgTableName, id, name, type);
+            msg_tableName, id, message, type);
 
 
     //create
@@ -29,6 +29,9 @@ public interface MessageCRUD {
 
     //read one
     List<Message> message_readAll();
+
+    List<Message> message_readAll(Message.Type type);
+
 
     //read all
     Message message_readOne(Integer id);

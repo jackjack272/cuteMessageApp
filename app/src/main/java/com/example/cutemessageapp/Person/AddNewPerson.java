@@ -1,6 +1,8 @@
-package com.example.cutemessageapp;
+package com.example.cutemessageapp.Person;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,14 +13,17 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.cutemessageapp.Database.Db;
-import com.example.cutemessageapp.Database.Entities.Person;
+import com.example.cutemessageapp.Person.Adapter.PersonAdapter;
+import com.example.cutemessageapp.Person.Entity.Person;
+import com.example.cutemessageapp.MainActivity;
+import com.example.cutemessageapp.R;
 
 public class AddNewPerson extends AppCompatActivity {
 
     EditText name, phoneNumber;
     Button save;
 
-    ListView showPeople;
+    RecyclerView showPeople;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,9 +33,8 @@ public class AddNewPerson extends AppCompatActivity {
 
 
         //fill in the listview
+        setAdapter();
         
-
-
 
         //once i click save i want to be sent back to previous page.
         save.setOnClickListener(new View.OnClickListener() {
@@ -57,6 +61,13 @@ public class AddNewPerson extends AppCompatActivity {
 
     }
 
+    private void setAdapter(){
+        RecyclerView.LayoutManager layoutManager= new LinearLayoutManager(this);
+        showPeople.setLayoutManager(layoutManager);
+
+        PersonAdapter personAdapter= new PersonAdapter(this);
+        showPeople.setAdapter(personAdapter);
+    }
 
     private void makeAssociations(){
         this.name= findViewById(R.id.name);

@@ -1,6 +1,8 @@
-package com.example.cutemessageapp;
+package com.example.cutemessageapp.Message;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,13 +14,18 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.cutemessageapp.Database.Db;
-import com.example.cutemessageapp.Database.Entities.Message;
+import com.example.cutemessageapp.Message.Adapter.MessageAdapter;
+import com.example.cutemessageapp.Message.Entity.Message;
+import com.example.cutemessageapp.MainActivity;
+import com.example.cutemessageapp.R;
 
 public class AddNewMessage extends AppCompatActivity {
 
     Spinner spinner;
     EditText theMessage;
     Button save,back;
+
+    RecyclerView myMessages;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,12 +34,8 @@ public class AddNewMessage extends AppCompatActivity {
 
         makeAssociateions();
 
-//      make the spinner
-        spinner.setAdapter(
-                new ArrayAdapter<>(this,
-                        androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
-                        Message.Type.values())
-        );
+        setSpinner();
+        setAdapter();
 
         save.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,8 +49,10 @@ public class AddNewMessage extends AppCompatActivity {
                 }
 
                 db.message_save(msg);
+                Toast.makeText(AddNewMessage.this, "Message was added successfully", Toast.LENGTH_SHORT).show();
             }
         });
+
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,6 +61,22 @@ public class AddNewMessage extends AppCompatActivity {
         });
     }
 
+    private void setAdapter(){
+        LinearLayoutManager linearLayoutManager= new LinearLayoutManager(this);
+        myMessages.setLayoutManager(linearLayoutManager);
+
+        myMessages.setAdapter( new MessageAdapter(this));
+    }
+    private void setSpinner(){
+
+//      make the spinner
+        spinner.setAdapter(
+                new ArrayAdapter<>(this,
+                        androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
+                        Message.Type.values())
+        );
+
+    }
     private void makeAssociateions(){
         this.spinner= findViewById(R.id.msgCategory);
         this.theMessage =findViewById(R.id.message);
@@ -63,7 +84,6 @@ public class AddNewMessage extends AppCompatActivity {
         this.save=findViewById(R.id.saveMsg);
         this.back= findViewById(R.id.msgBack);
     }
-
     private Message getMsg(){
         String msg= theMessage.getText().toString();
         if(msg.isEmpty()){

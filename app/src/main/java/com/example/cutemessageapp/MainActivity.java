@@ -1,10 +1,8 @@
 package com.example.cutemessageapp;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.telephony.SmsManager;
@@ -16,8 +14,10 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.cutemessageapp.Database.Db;
-import com.example.cutemessageapp.Database.Entities.Message;
-import com.example.cutemessageapp.Database.Entities.Person;
+import com.example.cutemessageapp.Message.Entity.Message;
+import com.example.cutemessageapp.Message.AddNewMessage;
+import com.example.cutemessageapp.Person.Entity.Person;
+import com.example.cutemessageapp.Person.AddNewPerson;
 
 import java.util.List;
 
