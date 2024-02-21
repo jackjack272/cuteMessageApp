@@ -144,7 +144,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void appNavigation(){
-
         addNewPerson.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -165,19 +164,25 @@ public class MainActivity extends AppCompatActivity {
 
         List<Person> people= db.person_readAll();
 
-        if (people==null){
+        if (people==null || people.size()==0){
             number.setAdapter(
                     new ArrayAdapter<>(this,
                             androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
-                            new String[]{"please Add a phone number"}
+                            new String[]{"Please add a phone number"}
                     )
             );
-
         }else{
+
+            String[] phoneNums=new String[people.size()];
+
+            for (int x=0; x<people.size(); x++){
+                phoneNums[x]=String.valueOf(people.get(x).getName()+": "+people.get(x).getPhoneNumber());
+            }
             number.setAdapter(
                     new ArrayAdapter<>(this,
                             androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
-                            people)
+                            phoneNums
+                    )
             );
         }
     }
@@ -189,7 +194,5 @@ public class MainActivity extends AppCompatActivity {
                         Message.Type.values())
         );
     }
-
-
 
 }

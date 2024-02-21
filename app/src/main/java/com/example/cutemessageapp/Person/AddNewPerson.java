@@ -22,7 +22,6 @@ public class AddNewPerson extends AppCompatActivity {
 
     EditText name, phoneNumber;
     Button save;
-
     RecyclerView showPeople;
 
     @Override
@@ -31,10 +30,8 @@ public class AddNewPerson extends AppCompatActivity {
         setContentView(R.layout.activity_add_new_person);
         makeAssociations();
 
-
         //fill in the listview
         setAdapter();
-        
 
         //once i click save i want to be sent back to previous page.
         save.setOnClickListener(new View.OnClickListener() {
@@ -51,12 +48,9 @@ public class AddNewPerson extends AppCompatActivity {
                 db.person_save(person);
                 Toast.makeText(AddNewPerson.this, "person was saved successfully", Toast.LENGTH_SHORT).show();
 
-
                 startActivity(new Intent(AddNewPerson.this, MainActivity.class));
-
             }
         });
-
     }
 
     private void setAdapter(){

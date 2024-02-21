@@ -21,6 +21,7 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.InternalCl
 
     Db db;
     List<Person> people;
+
     public PersonAdapter(Context context){
         this.db= new Db(context);
         this.people=db.person_readAll();

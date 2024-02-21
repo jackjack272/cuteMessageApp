@@ -6,13 +6,13 @@ import java.util.List;
 
 public interface PersonCRUD {
 
-    String person_tableName ="person";
-    String person_id="id";
-    String personName="name";
-    String personPhoneNum="phoneNum";
+    String TABLE_NAME ="person";
+    String ID ="id";
+    String NAME ="name";
+    String PHONE_NUMBER ="phoneNum";
 
 
-    final static String dropTablePerson="DROP TABLE IF EXISTS "+ person_tableName;
+    final static String dropTablePerson="DROP TABLE IF EXISTS "+ TABLE_NAME;
 
     //table code here.
     String makeUserTable = String.format("CREATE TABLE %s " +
@@ -21,7 +21,7 @@ public interface PersonCRUD {
                     "%s TEXT, " + // Define personName as TEXT
                     "%s TEXT" +  // Define personPhoneNum as TEXT
                     ")",
-            person_tableName, "person_id", "personName", "personPhoneNum");
+            TABLE_NAME,ID ,NAME,PHONE_NUMBER);
 
 
 

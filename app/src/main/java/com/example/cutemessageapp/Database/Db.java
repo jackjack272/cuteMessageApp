@@ -146,18 +146,22 @@ public class Db extends SQLiteOpenHelper
 //Person Section
     @Override
     public void person_save(Person person) {
+
         ContentValues cv= new ContentValues();
-            cv.put(PersonCRUD.personName, person.getName());
-            cv.put(PersonCRUD.personPhoneNum, person.getPhoneNumber());
+        cv.put(PersonCRUD.NAME,person.getName());
+        cv.put(PersonCRUD.PHONE_NUMBER, person.getPhoneNumber());
+
 
         SQLiteDatabase db= getWritableDatabase();
-        db.insert(PersonCRUD.person_tableName, null, cv);
+        db.insert(PersonCRUD.TABLE_NAME,null,cv);
     }
+
+
 
     @Override
     public Person person_readOne(Integer id) {
         String sqlQuery=String.format("SELECT * FROM %s WHERE %s ==%d",
-                PersonCRUD.person_tableName, PersonCRUD.person_id, id);
+                PersonCRUD.TABLE_NAME, PersonCRUD.ID, id);
 
         Cursor cursor= getReadableDatabase().rawQuery(sqlQuery, null);
         if(cursor.getCount()==0){
@@ -165,36 +169,38 @@ public class Db extends SQLiteOpenHelper
         }
 
         return new Person(
-            cursor.getInt(cursor.getColumnIndexOrThrow(PersonCRUD.person_id)),
-            cursor.getString(cursor.getColumnIndexOrThrow(PersonCRUD.personName)),
-            cursor.getLong(cursor.getColumnIndexOrThrow(PersonCRUD.personPhoneNum))
+            cursor.getInt(cursor.getColumnIndexOrThrow(PersonCRUD.ID)),
+            cursor.getString(cursor.getColumnIndexOrThrow(PersonCRUD.NAME)),
+            cursor.getLong(cursor.getColumnIndexOrThrow(PersonCRUD.PHONE_NUMBER))
         );
     }
 
     @Override
     public List<Person> person_readAll() {
-        String sqlQuery= String.format("SELECT * FROM %s ",PersonCRUD.person_tableName);
+
+        String sqlQuery= String.format("SELECT * FROM %s ",PersonCRUD.TABLE_NAME);
         Cursor cursor= getReadableDatabase().rawQuery(sqlQuery,null);
         cursor.moveToFirst();
 
         List<Person> people=new ArrayList<>();
-        while (cursor.moveToNext()){
+        do{
             people.add(
-                new Person(
-                            cursor.getInt(cursor.getColumnIndexOrThrow(PersonCRUD.person_id)),
-                            cursor.getString(cursor.getColumnIndexOrThrow(PersonCRUD.personName)),
-                            cursor.getLong(cursor.getColumnIndexOrThrow(PersonCRUD.personPhoneNum))
+                    new Person(
+                            cursor.getInt(cursor.getColumnIndexOrThrow(PersonCRUD.ID)),
+                            cursor.getString(cursor.getColumnIndexOrThrow(PersonCRUD.NAME)),
+                            cursor.getLong(cursor.getColumnIndexOrThrow(PersonCRUD.PHONE_NUMBER))
                     )
             );
-        }
+        }while(cursor.moveToNext());
+
         return people;
     }
 
     @Override
     public void person_delete(Integer id) {
         getWritableDatabase().delete(
-                PersonCRUD.person_tableName,
-                PersonCRUD.person_id+"==?",
+                PersonCRUD.TABLE_NAME,
+                PersonCRUD.ID +"==?",
                 new String[]{String.valueOf(id)}
         );
     }
